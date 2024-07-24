@@ -1,0 +1,772 @@
+{
+  "deck_data": {
+    "id": 51904,
+    "datetime_received": "2024-07-23T00:32:26.570348",
+    "datetime_user_specified": null,
+    "contact_person_first_name": null,
+    "contact_person_last_name": null,
+    "contact_person_role": null,
+    "contact_person_email": null,
+    "referred_website": null,
+    "parsed_deck_type": "deck",
+    "kanban_stage_id": null
+  },
+  "client_investor_member_data": {
+    "first_name": "Simone",
+    "last_name": "Pesce",
+    "email": "simone@scientifica.vc"
+  },
+  "startup_data": {
+    "startup_name": "Pipein",
+    "founded_year": 2021,
+    "problem": "Plant managers lack sufficient information to prevent the waste of natural resources and environmental disasters. This problem affects industries such as aqueducts, oil & gas, hydropower plants, and hydrogen, highlighting a significant need for improved pipeline maintenance and monitoring.",
+    "solution": "The startup PipeIn offers a modular and versatile robotic probe called Shark4 that performs autonomous inspections inside pipelines, providing precise thickness measurements. Their solution includes a predictive maintenance platform that allows managers to switch from a preventive to a predictive approach, optimizing maintenance operations by providing the residual life and risk of failure for each pipeline.",
+    "solution_short": "The startup offers a robotic probe called Shark4 for autonomous pipeline inspections and a predictive maintenance platform for optimizing operations.",
+    "technology_type": "hardware",
+    "business_model": "b2b",
+    "revenue_model": "subscription",
+    "stage": "seed",
+    "industry": null,
+    "subindustry": null,
+    "estimated_tam": 3.9,
+    "subindustry_tam": null,
+    "subindustry_tam_source": "### Market Analysis:\n\n- **Market Size and Growth**:\n  \n- The global pipe inspection robot market is projected to reach USD 13 billion by 2033, growing at a CAGR of 15.8% [source](https://www.futuremarketinsights.com/reports/pipe-inspection-robots-market).\n  \n- Another source estimates the market size to surpass USD 5 billion by 2036, with a CAGR of around 15% [source](https://www.researchnester.com/reports/pipe-inspection-robot-market/5235).\n  \n- Based on these estimates, we assume the TAM for PipeIn's Shark4 solution to be approximately USD 10 billion by 2033, as a midpoint between the provided figures.\n\n- **Customer Demographics**:\n  \n- The potential customer base includes thousands of pipeline managers globally, with significant concentrations in North America, Europe, and Asia [source](https://www.globaldata.com/companies/top-companies-by-sector/oil-gas/global-pipeline-operators-by-total-pipeline-length/).\n  \n- Pipeline managers are typically professionals with engineering backgrounds, employed by large energy companies or specialized pipeline management firms.\n\n- **Key Market Drivers**:\n  \n- **Technological Advancements**: Integration of AI and machine learning for predictive maintenance [source](https://novilabs.com/wp-content/uploads/2020/02/Barclays_Frac-to-the-Future-Oils-Digital-Rebirth_01152020.pdf).\n  \n- **Aging Infrastructure**: Increasing need for regular inspections to prevent failures [source](https://www.linkedin.com/pulse/tracked-in-pipe-inspection-robot-market-size-share-93bic/).\n  \n- **Regulatory Compliance**: Stricter regulations on pipeline safety and environmental protection [source](https://www.arcweb.com/market-analysis/robotic-inspection-services).\n\n- **Customer Acquisition Channels**:\n  \n- Effective channels likely include industry conferences, trade shows, professional associations like IPLOCA, and digital marketing through industry publications [source](https://www.iploca.com/about-us/world-federation/).\n\n### TAM Calculation:\n\n- **Assumptions**:\n  \n- **Total Number of Potential Customers**: Based on the global pipeline integrity management market and the number of operational pipelines, we estimate there are approximately 3,700 potential customers (pipeline managers) globally.\n  \n- **Average Revenue Per Customer**: Assuming a mix of on-demand and long-term agreements, we estimate an average revenue of $10,500 per kilometer. For simplicity, we assume each customer manages an average of 100 kilometers of pipeline.\n\n- **Calculation**:\n  \n- **Average Revenue Per Customer**: $10,500 per kilometer * 100 kilometers = $1,050,000 per customer.\n  \n- **Total Number of Potential Customers**: 3,700.\n  \n- **TAM**: $1,050,000 * 3,700 = $3,885,000,000 or approximately USD 3.9 billion.\n\n- **Final TAM Estimation**:\n  \n- The estimated TAM for PipeIn's Shark4 solution is approximately USD 3.9 billion, based on the average revenue per customer and the total number of potential customers. This estimate reflects realistic and actionable market conditions, considering industry norms and available data.",
+    "traction": "- HW prototype (TRL 7) and SW Alpha version developed.\n- 2 Letters of Intent (LOIs) secured.\n- 5 main Italian utilities involved.\n- 2 Proof of Concepts (PoCs) completed.",
+    "country": "IT",
+    "city": "Torino",
+    "website": "https://www.pipein.it/",
+    "founder_count": null,
+    "linkedin_url": "pipein",
+    "company_follower_count": 1061,
+    "employee_count": 7,
+    "id": 9932,
+    "parsed_deck_id": 51904
+  },
+  "founders_data": [
+    {
+      "first_name": "Marek",
+      "last_name": "Murgia",
+      "full_name": "Marek Murgia",
+      "years_of_work_experience": null,
+      "education_level": null,
+      "latest_employer": null,
+      "current_employment_role": "COO",
+      "startup_founder_profile": "commercial",
+      "repeat_founder": false,
+      "linkedin_url": "marek-murgia",
+      "linkedin_follower_count": 874,
+      "linkedin_connection_count": 870,
+      "city_of_residence": "Greater Turin Metropolitan Area",
+      "country_of_residence": "IT",
+      "id": 28449,
+      "education": [
+        {
+          "title": "Master's degree",
+          "school": "Politecnico di Torino",
+          "school_linkedin_profile_url": "https://www.linkedin.com/company/165510/",
+          "school_linkedin_logo_url": "https://storage.googleapis.com/standard-storage-class/api/decks/51904/linkedin_images/latest_education_school_linkedin_logo_url/profile/a06999b6-90e0-4b1e-941c-68dc40ef8b40"
+        },
+        {
+          "title": "SEI Inventor - Specialised Course",
+          "school": "Vento",
+          "school_linkedin_profile_url": "https://www.linkedin.com/company/18522627/",
+          "school_linkedin_logo_url": "https://storage.googleapis.com/standard-storage-class/api/decks/51904/linkedin_images/second_latest_education_school_linkedin_logo_url/profile/f801ec12-a2bb-47f1-a7e1-b77383df265d"
+        }
+      ],
+      "employment": [
+        {
+          "role": null,
+          "title": "Process Engineering Intern",
+          "company": "Swisslog Healthcare",
+          "company_linkedin_profile_url": "https://www.linkedin.com/company/swissloghealthcare",
+          "company_linkedin_logo_url": "https://storage.googleapis.com/standard-storage-class/api/decks/51904/linkedin_images/latest_employment_company_linkedin_logo_url/profile/d03e66c8-ada7-4969-b04d-c247fd529b9a"
+        },
+        {
+          "title": null,
+          "company": null,
+          "company_linkedin_profile_url": null,
+          "company_linkedin_logo_url": null
+        },
+        {
+          "title": null,
+          "company": null,
+          "company_linkedin_profile_url": null,
+          "company_linkedin_logo_url": null
+        },
+        {
+          "title": null,
+          "company": null,
+          "company_linkedin_profile_url": null,
+          "company_linkedin_logo_url": null
+        }
+      ]
+    },
+    {
+      "first_name": "Antonio",
+      "last_name": "Misuraca",
+      "full_name": "Antonio Misuraca",
+      "years_of_work_experience": null,
+      "education_level": null,
+      "latest_employer": null,
+      "current_employment_role": "CTO",
+      "startup_founder_profile": "technical",
+      "repeat_founder": false,
+      "linkedin_url": "antomisuraca",
+      "linkedin_follower_count": 822,
+      "linkedin_connection_count": 817,
+      "city_of_residence": "Turin",
+      "country_of_residence": "IT",
+      "id": 28450,
+      "education": [
+        {
+          "title": "Master's Degree",
+          "school": "Politecnico di Torino",
+          "school_linkedin_profile_url": "https://www.linkedin.com/company/165510/",
+          "school_linkedin_logo_url": "https://storage.googleapis.com/standard-storage-class/api/decks/51904/linkedin_images/latest_education_school_linkedin_logo_url/profile/a0cf14ac-eddf-4435-a84e-aba65456e0d5"
+        },
+        {
+          "title": "Specialized Course",
+          "school": "Vento",
+          "school_linkedin_profile_url": "https://www.linkedin.com/company/18522627/",
+          "school_linkedin_logo_url": "https://storage.googleapis.com/standard-storage-class/api/decks/51904/linkedin_images/second_latest_education_school_linkedin_logo_url/profile/77c44a87-f303-480a-9530-51d202d40217"
+        }
+      ],
+      "employment": [
+        {
+          "role": null,
+          "title": "Engineering Consultant",
+          "company": "MCA Italia",
+          "company_linkedin_profile_url": "https://www.linkedin.com/company/mcaitaly",
+          "company_linkedin_logo_url": "https://storage.googleapis.com/standard-storage-class/api/decks/51904/linkedin_images/latest_employment_company_linkedin_logo_url/profile/02c2f736-e40c-4eb3-a62e-15ff5e201071"
+        },
+        {
+          "title": "EU Project Engineer Consultant",
+          "company": "Comau",
+          "company_linkedin_profile_url": "https://www.linkedin.com/company/comau",
+          "company_linkedin_logo_url": "https://storage.googleapis.com/standard-storage-class/api/decks/51904/linkedin_images/second_latest_employment_company_linkedin_logo_url/profile/4808bb9d-82f8-4497-8ca0-5b6fa06e248f"
+        },
+        {
+          "title": null,
+          "company": null,
+          "company_linkedin_profile_url": null,
+          "company_linkedin_logo_url": null
+        },
+        {
+          "title": "AGV Installation Engineer",
+          "company": "ASTI InSystems - InSystems Automation GmbH",
+          "company_linkedin_profile_url": "https://www.linkedin.com/company/insystems-automation-gmbh",
+          "company_linkedin_logo_url": "https://storage.googleapis.com/standard-storage-class/api/decks/51904/linkedin_images/fourth_latest_employment_company_linkedin_logo_url/profile/d9fea020-80dc-435a-b75e-95c90a7aadb5"
+        }
+      ]
+    },
+    {
+      "first_name": "Alessandro",
+      "last_name": "Minori",
+      "full_name": "Alessandro Minori",
+      "years_of_work_experience": null,
+      "education_level": null,
+      "latest_employer": null,
+      "current_employment_role": "CEO",
+      "startup_founder_profile": "commercial",
+      "repeat_founder": false,
+      "linkedin_url": "alessandro-minori",
+      "linkedin_follower_count": 836,
+      "linkedin_connection_count": 825,
+      "city_of_residence": "Turin",
+      "country_of_residence": "IT",
+      "id": 28451,
+      "education": [
+        {
+          "title": "Laurea Magistrale  LM",
+          "school": "Politecnico di Torino",
+          "school_linkedin_profile_url": "https://www.linkedin.com/company/165510/",
+          "school_linkedin_logo_url": "https://storage.googleapis.com/standard-storage-class/api/decks/51904/linkedin_images/latest_education_school_linkedin_logo_url/profile/580be557-24d8-4137-8a2f-edfe5b76d2f5"
+        },
+        {
+          "title": "Engineering physics",
+          "school": "Politecnico di Torino",
+          "school_linkedin_profile_url": "https://www.linkedin.com/company/165510/",
+          "school_linkedin_logo_url": "https://storage.googleapis.com/standard-storage-class/api/decks/51904/linkedin_images/second_latest_education_school_linkedin_logo_url/profile/b83873f6-10d4-450e-86b8-a25d9a13e3a3"
+        }
+      ],
+      "employment": [
+        {
+          "role": null,
+          "title": "Studente",
+          "company": "Alta Scuola Politecnica",
+          "company_linkedin_profile_url": "https://www.linkedin.com/company/alta-scuola-politecnica",
+          "company_linkedin_logo_url": "https://storage.googleapis.com/standard-storage-class/api/decks/51904/linkedin_images/latest_employment_company_linkedin_logo_url/profile/b072935f-5b2f-4940-bbd3-bbf1779913f2"
+        },
+        {
+          "title": "Machine Learning Researcher",
+          "company": "SynDiag",
+          "company_linkedin_profile_url": "https://www.linkedin.com/company/syndiag",
+          "company_linkedin_logo_url": "https://storage.googleapis.com/standard-storage-class/api/decks/51904/linkedin_images/second_latest_employment_company_linkedin_logo_url/profile/4c281395-2f50-49a1-8b02-35042be2f146"
+        },
+        {
+          "title": "Tecnico specializzato",
+          "company": "FAS Servizio Sicurezza Srl",
+          "company_linkedin_profile_url": "https://www.linkedin.com/company/fas-servizio-sicurezza-srl",
+          "company_linkedin_logo_url": "https://storage.googleapis.com/standard-storage-class/api/decks/51904/linkedin_images/third_latest_employment_company_linkedin_logo_url/fas_servizio_sicurezza_srl_logo/99f0ae44-941c-49da-a857-c5d718f5cc38"
+        },
+        {
+          "title": null,
+          "company": null,
+          "company_linkedin_profile_url": null,
+          "company_linkedin_logo_url": null
+        }
+      ]
+    }
+  ],
+  "competitors_data": [
+    {
+      "name": "Inspector systems",
+      "solution": "The company offers a variety of robots for inspecting and repairing pipelines.",
+      "average_similarity": 0.7705036357795653,
+      "founded_date": "1982-12-31T23:00:00",
+      "country": "Germany",
+      "country_code": "DE",
+      "total_funding_usd": 0,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": "unknown",
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/v1483512112/yvmvqeqcfnmwx7embuek.png",
+      "website_url": "http://www.inspector-systems.com/",
+      "crunchbase_url": "https://www.crunchbase.com/organization/inspector-systems"
+    },
+    {
+      "name": "Venture Cup Danmark",
+      "solution": "The company provides autonomous robots for continuous monitoring and detection of erosion and leakage in water, oil, and gas pipelines of various shapes.",
+      "average_similarity": 0.7594450855586004,
+      "founded_date": "2000-01-01T00:00:00",
+      "country": "Denmark",
+      "country_code": null,
+      "total_funding_usd": null,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": null,
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/ivxrrhng65vamhb4rlsy",
+      "website_url": "http://venturecup.dk",
+      "crunchbase_url": "https://www.crunchbase.com/organization/venture-cup"
+    },
+    {
+      "name": "Taris",
+      "solution": "The company offers a range of video inspection robots for diagnosing and inspecting pipelines and wells.",
+      "average_similarity": 0.7555494983985575,
+      "founded_date": null,
+      "country": "Russian Federation",
+      "country_code": "RU",
+      "total_funding_usd": 0,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": "unknown",
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/ugrn8gr1zt5hqyydvjib",
+      "website_url": "https://taris.ru/",
+      "crunchbase_url": "https://www.crunchbase.com/organization/taris"
+    },
+    {
+      "name": "Schwalm Robotic",
+      "solution": "The company offers a robotic solution for the inspection and repair of sewer pipes.",
+      "average_similarity": 0.712339107305328,
+      "founded_date": "1938-01-01T00:00:00",
+      "country": "Germany",
+      "country_code": "DE",
+      "total_funding_usd": 0,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": "unknown",
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/zyzmvgsevbc8ia81yrbx",
+      "website_url": "https://www.schwalm-robotic.de/de.html",
+      "crunchbase_url": "https://www.crunchbase.com/organization/schwalm-robotic"
+    },
+    {
+      "name": "WT Industries",
+      "solution": "The company offers innovative launch and recovery systems for offshore equipment, including ROVs, AUVs, tooling, and equipment.",
+      "average_similarity": 0.6845947332076334,
+      "founded_date": "2006-01-01T00:00:00",
+      "country": "United States",
+      "country_code": null,
+      "total_funding_usd": null,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": null,
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/gyclnwsrkub3a6yrk2zt",
+      "website_url": "https://wt-ind.com/",
+      "crunchbase_url": "https://www.crunchbase.com/organization/wt-industries"
+    },
+    {
+      "name": "Andalú Sea Robótica Submarina",
+      "solution": "The company offers a variety of underwater services, including subsea inspections, surveys, and maintenance, using the latest robotic technology.",
+      "average_similarity": 0.6811147332191516,
+      "founded_date": "2020-01-01T00:00:00",
+      "country": "Spain",
+      "country_code": "ES",
+      "total_funding_usd": 0,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": "1-10",
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/emocrk57ttbslsd8inhe",
+      "website_url": "https://andalu-sea.com",
+      "crunchbase_url": "https://www.crunchbase.com/organization/andalú-sea-robótica-submarina"
+    },
+    {
+      "name": "Blue Atlas Robotics",
+      "solution": "The company offers a self-operating underwater inspection robot that provides clear, complete, and detailed video imagery with an emphasis on ease of use.",
+      "average_similarity": 0.6732331319590301,
+      "founded_date": "2018-01-01T00:00:00",
+      "country": "Denmark",
+      "country_code": null,
+      "total_funding_usd": 70000,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": "grant",
+      "latest_funding_round_date": "2023-10-19T00:00:00",
+      "employee_count": null,
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/ksqqeufsycdpekjkjoku",
+      "website_url": "https://blueatlasrobotics.com/",
+      "crunchbase_url": "https://www.crunchbase.com/organization/blue-atlas-robotics"
+    },
+    {
+      "name": "Modus Subsea Services",
+      "solution": "The company offers a range of subsea survey, seabed intervention and offshore solutions, including autonomous and traditional platforms for survey, inspection and subsea intervention scopes.",
+      "average_similarity": 0.6715161608928685,
+      "founded_date": "2008-01-01T00:00:00",
+      "country": "United Kingdom",
+      "country_code": "GBR",
+      "total_funding_usd": 6231329,
+      "latest_funding_round_usd": 6231329,
+      "latest_funding_round_stage": "debt_financing",
+      "latest_funding_round_date": "2023-04-05T00:00:00",
+      "employee_count": "51-100",
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/xer6vpakjard8h3ukcwl",
+      "website_url": "http://modus-ltd.com",
+      "crunchbase_url": "https://www.crunchbase.com/organization/modus-subsea-services"
+    },
+    {
+      "name": "Balt Robotics",
+      "solution": "The company offers advanced underwater inspection technology using autonomous underwater vehicles (AUVs) for efficient and accurate assessments of underwater structures.",
+      "average_similarity": 0.6702611845887425,
+      "founded_date": null,
+      "country": "Poland",
+      "country_code": null,
+      "total_funding_usd": null,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": null,
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/v1483440970/ivpxkqihlhkqjoe8szpm.png",
+      "website_url": "http://baltrobotics.com/",
+      "crunchbase_url": "https://www.crunchbase.com/organization/balt-robotics"
+    },
+    {
+      "name": "Hydromea",
+      "solution": "The company offers a solution for automating remote inspection and monitoring of submerged assets, enabling efficient and sustainable underwater operations.",
+      "average_similarity": 0.6633111037797406,
+      "founded_date": "2014-12-05T00:00:00",
+      "country": "Switzerland",
+      "country_code": "CHE",
+      "total_funding_usd": 3823241,
+      "latest_funding_round_usd": 2182429,
+      "latest_funding_round_stage": "grant",
+      "latest_funding_round_date": "2023-05-11T00:00:00",
+      "employee_count": "11-50",
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/zbpczl3gxcqnakinj1xe",
+      "website_url": "http://hydromea.com",
+      "crunchbase_url": "https://www.crunchbase.com/organization/hydromea"
+    },
+    {
+      "name": "DMC",
+      "solution": "The company offers customized underwater services, including inspections, surveys, and maintenance, using ROVs and specialized equipment for various industries.",
+      "average_similarity": 0.6628829833462524,
+      "founded_date": "2012-01-01T00:00:00",
+      "country": "Denmark",
+      "country_code": "DNK",
+      "total_funding_usd": 55692,
+      "latest_funding_round_usd": 55692,
+      "latest_funding_round_stage": "grant",
+      "latest_funding_round_date": "2016-07-01T00:00:00",
+      "employee_count": "1-10",
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/cqjfbzijqn6zzi0bpmmf",
+      "website_url": "http://dmc-underwater.com",
+      "crunchbase_url": "https://www.crunchbase.com/organization/dmc-b6d6"
+    },
+    {
+      "name": "GeoCorr",
+      "solution": "The company offers pipeline inspection technologies, including MFL, Caliper, and Inertial Mapping, to meet any pipeline inspection challenge.",
+      "average_similarity": 0.6621558056662735,
+      "founded_date": "2006-01-01T00:00:00",
+      "country": "United States",
+      "country_code": null,
+      "total_funding_usd": 0,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": null,
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/tmdubtfccqguk4cn8iim",
+      "website_url": "https://geocorr.com",
+      "crunchbase_url": "https://www.crunchbase.com/organization/geocorr"
+    },
+    {
+      "name": "Pipe-Seal-Tec",
+      "solution": "The company offers intelligent, autonomous robotic solutions for pipe rehabilitation.",
+      "average_similarity": 0.6605155456988011,
+      "founded_date": null,
+      "country": "Germany",
+      "country_code": "DE",
+      "total_funding_usd": 0,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": "11-50",
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/a5d6bnhnbyeoc2ihtvm8",
+      "website_url": "https://pipe-seal-tec.de/",
+      "crunchbase_url": "https://www.crunchbase.com/organization/pipe-seal-tec"
+    },
+    {
+      "name": "Watbots",
+      "solution": "The company offers an autonomous net washing robot that cleans and inspects fish farm nets 24/7 without human intervention.",
+      "average_similarity": 0.6604213512194974,
+      "founded_date": "2019-01-01T00:00:00",
+      "country": "Norway",
+      "country_code": "NO",
+      "total_funding_usd": 0,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": "unknown",
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/amnonio2ppopgceanu1v",
+      "website_url": "https://watbots.com/",
+      "crunchbase_url": "https://www.crunchbase.com/organization/watbots"
+    },
+    {
+      "name": "Indian Underwater Robotics Society",
+      "solution": "The company offers a range of underwater robotic technologies, including remotely operated vehicles (ROVs) and autonomous underwater vehicles (AUVs), for various applications.",
+      "average_similarity": 0.6566345691680955,
+      "founded_date": "2004-01-01T00:00:00",
+      "country": "India",
+      "country_code": null,
+      "total_funding_usd": null,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": null,
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/pufvbjiykauz3fr0dq4e",
+      "website_url": "http://www.iurs.org",
+      "crunchbase_url": "https://www.crunchbase.com/organization/indian-underwater-robotics-society-iurs"
+    },
+    {
+      "name": "Pipeline Innovations",
+      "solution": "Pipeline Innovations offers specialized pipe measurement products and services for pipeline construction, commissioning, and cleaning operations worldwide.",
+      "average_similarity": 0.6528455557519872,
+      "founded_date": "2009-01-01T00:00:00",
+      "country": "United Kingdom",
+      "country_code": null,
+      "total_funding_usd": null,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": null,
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/rgbnahzf4nzy70zsevlc",
+      "website_url": "https://pipeline-innovations.com",
+      "crunchbase_url": "https://www.crunchbase.com/organization/pipeline-innovations"
+    },
+    {
+      "name": "UK Systems",
+      "solution": "The company offers pipeline inspection systems that help users to visually inspect pipelines.",
+      "average_similarity": 0.6522907316684747,
+      "founded_date": "1994-01-01T00:00:00",
+      "country": "United Kingdom",
+      "country_code": "GB",
+      "total_funding_usd": 0,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": "1-10",
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/var738hshy6wy9wog2ss",
+      "website_url": "https://www.uksl.co.uk",
+      "crunchbase_url": "https://www.crunchbase.com/organization/uk-systems"
+    },
+    {
+      "name": "AQUA Exploración",
+      "solution": "The company offers a wide range of innovative subsea services and solutions, including ROV inspection and cleaning, for the oil and gas, renewable energy, telecommunications, search and rescue, science and research, and aquaculture industries.",
+      "average_similarity": 0.6502966076312439,
+      "founded_date": "2017-01-01T00:00:00",
+      "country": "Mexico",
+      "country_code": "MEX",
+      "total_funding_usd": 0,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": "2024-05-15T00:00:00",
+      "employee_count": "11-50",
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/txnyuerurdkmy2b4tzle",
+      "website_url": "http://aquaexploracion.mx",
+      "crunchbase_url": "https://www.crunchbase.com/organization/aqua-exploraci%C3%B3n"
+    },
+    {
+      "name": "Hermes Technologie",
+      "solution": "The company offers a wide range of sewer robots for economical and efficient pipe repairs.",
+      "average_similarity": 0.6489716736623669,
+      "founded_date": "1987-01-01T00:00:00",
+      "country": "United Kingdom",
+      "country_code": null,
+      "total_funding_usd": null,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": null,
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/vfndgiupalhvgp78c1ve",
+      "website_url": "https://www.hermes-technologie.com/en/",
+      "crunchbase_url": "https://www.crunchbase.com/organization/hermes-technologie"
+    },
+    {
+      "name": "Nicolas Srouji Establishmant",
+      "solution": "The company offers state-of-the-art trenchers for large pipeline projects.",
+      "average_similarity": 0.6474502646913087,
+      "founded_date": "1982-01-01T00:00:00",
+      "country": "Lebanon",
+      "country_code": "LB",
+      "total_funding_usd": 0,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": "51-100",
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/xvzbsrtwp0kn0q593nr5",
+      "website_url": "https://www.nsesrouji.com",
+      "crunchbase_url": "https://www.crunchbase.com/organization/nicolas-srouji-establishmant"
+    },
+    {
+      "name": "State 9 Industry",
+      "solution": "The company offers inspection, diagnostics, and various treatments for pipelines and canals.",
+      "average_similarity": 0.6455600050425544,
+      "founded_date": "2001-01-01T00:00:00",
+      "country": "France",
+      "country_code": null,
+      "total_funding_usd": null,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": null,
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/bnhfzspzoa3vxdiz3oi5",
+      "website_url": "http://www.etat9industrie.com",
+      "crunchbase_url": "https://www.crunchbase.com/organization/state-9-industry"
+    },
+    {
+      "name": "Casper Construction",
+      "solution": "The company provides pipeline maintenance and repair services.",
+      "average_similarity": 0.6454577623168374,
+      "founded_date": "1940-01-01T00:00:00",
+      "country": "United States",
+      "country_code": "US",
+      "total_funding_usd": 0,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": "101-250",
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/ey7mt9oymivdlfsmejop",
+      "website_url": "https://www.casperconstructioninc.net/",
+      "crunchbase_url": "https://www.crunchbase.com/organization/casper-construction"
+    },
+    {
+      "name": "Fleet Cleaner",
+      "solution": "Fleet Cleaner provides robotic underwater services to clean and inspect hulls of ships while they are in port.",
+      "average_similarity": 0.6420148184317134,
+      "founded_date": "2011-01-01T00:00:00",
+      "country": "The Netherlands",
+      "country_code": "NL",
+      "total_funding_usd": 0,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": "11-50",
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/f2xssskpuauxrm1huhzn",
+      "website_url": "https://fleetcleaner.com",
+      "crunchbase_url": "https://www.crunchbase.com/organization/fleet-cleaner"
+    },
+    {
+      "name": "Vortex Robotics",
+      "solution": "The company offers a range of underwater vehicles and services, including inspection, filming, surveying, and sonar inspection.",
+      "average_similarity": 0.6400342154543657,
+      "founded_date": "2018-01-01T00:00:00",
+      "country": "Egypt",
+      "country_code": null,
+      "total_funding_usd": 0,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": null,
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/ufk2d575wl8uekso8pgg",
+      "website_url": "https://www.vortex-co.com/home",
+      "crunchbase_url": "https://www.crunchbase.com/organization/vortex-robotics"
+    },
+    {
+      "name": "Insatech",
+      "solution": "The company provides a wide range of instrumentation and automation solutions, including analysis, instruments, facility monitoring, process solutions, and marine solutions.",
+      "average_similarity": 0.6373897548600669,
+      "founded_date": "1989-01-01T00:00:00",
+      "country": "United Kingdom",
+      "country_code": "GB",
+      "total_funding_usd": 0,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": "101-250",
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/ajxxfb3jggxirdqcuozy",
+      "website_url": "https://www.insatech.com",
+      "crunchbase_url": "https://www.crunchbase.com/organization/insatech"
+    },
+    {
+      "name": "In-Pipe Robot",
+      "solution": "The company offers a next-generation pipeline inspection robot that provides extreme maneuverability, long-distance inspection, and precise XYZ localization to help clients inspect previously inaccessible areas and gain deep insights into pipeline conditions.",
+      "average_similarity": 0.6355150082352785,
+      "founded_date": "2020-11-05T00:00:00",
+      "country": "United States",
+      "country_code": "USA",
+      "total_funding_usd": 0,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": "seed",
+      "latest_funding_round_date": "2021-08-22T00:00:00",
+      "employee_count": "11-50",
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/e6zueccbua6ddidozuxn",
+      "website_url": "http://inpiperobot.com",
+      "crunchbase_url": "https://www.crunchbase.com/organization/in-pipe-robot"
+    },
+    {
+      "name": "Robosys Automation",
+      "solution": "The company offers autonomous marine solutions.",
+      "average_similarity": 0.6340381284974901,
+      "founded_date": "2012-01-01T00:00:00",
+      "country": "United Kingdom",
+      "country_code": null,
+      "total_funding_usd": null,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": null,
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/pbckpnoujmbruv1lpbhp",
+      "website_url": "https://robosysautomation.com",
+      "crunchbase_url": "https://www.crunchbase.com/organization/robosys-automation"
+    },
+    {
+      "name": "Scienzia Machinale",
+      "solution": "The company offers a robotic platform that can be used in various industrial applications.",
+      "average_similarity": 0.6327821831237069,
+      "founded_date": "1991-01-01T00:00:00",
+      "country": "Italy",
+      "country_code": "IT",
+      "total_funding_usd": 0,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": "11-50",
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/xi8qj8zrivzvfbkzchpo",
+      "website_url": "http://smrobotica.it/",
+      "crunchbase_url": "https://www.crunchbase.com/organization/scienzia-machinale"
+    },
+    {
+      "name": "Louisa Ingelheim: Digital Marketing Consultant",
+      "solution": "The company is developing a robotic system that automates laboratory processes.",
+      "average_similarity": 0.6327604055404707,
+      "founded_date": "2018-01-01T00:00:00",
+      "country": null,
+      "country_code": "",
+      "total_funding_usd": 0,
+      "latest_funding_round_usd": null,
+      "latest_funding_round_stage": null,
+      "latest_funding_round_date": null,
+      "employee_count": "1-10",
+      "logo_url": "https://images.crunchbase.com/image/upload/t_cb-default-original/qamkmcucyfbkxeri2lel",
+      "website_url": "https://www.louisaingelheim.com",
+      "crunchbase_url": "https://www.crunchbase.com/organization/louisa-ingelheim-digital-marketing-consultant"
+    }
+  ],
+  "verdict_data": {
+    "categorical_acceptance": true,
+    "categorical_acceptance_description": "The startup meets all your preferences.",
+    "founder_score": null,
+    "founder_score_description": null,
+    "opportunity_score": null,
+    "opportunity_score_description": null,
+    "diversity_score": null,
+    "diversity_score_description": null,
+    "investment_memo": "### Defensibility Analysis\n- **Intellectual Property**: PipeIn has filed a patent application for their innovative design on June 28, 2022. The patent covers key characteristics and functionalities of their Shark4 probe, providing a significant barrier to entry.\n- **Market Position**: They have started collaborations with major companies like ENI and Edison, validating their technology in real environments.\n- **Unique Technology**: The Shark4 probe is the world's first modular and versatile robot for pipeline inspection, offering precise thickness measurements and predictive maintenance capabilities.\n- **Barriers to Entry**: High barriers due to the unique design, patent protection, and the complexity of replicating their technology.\n\n### Team\n- **Background and Expertise**: The founding team consists of Marek Murgia (COO), Antonio Misuraca (CTO), and Alessandro Minori (CEO), all with strong educational backgrounds from Politecnico di Torino and relevant industry experience.\n- **Notable Achievements**: The team has successfully completed two PoCs and has ongoing collaborations with major utilities.\n- **Industry Experience**: The team members have experience in process engineering, engineering consulting, and business development, which are crucial for the startup's success.\n\n### Traction\n- **Growth Metrics**: The startup has completed two PoCs and has 2 LOIs from major Italian utilities.\n- **User Engagement**: Collaborations with ENI and Edison demonstrate significant interest and validation from industry leaders.\n- **Revenue**: Projected revenue growth from €30,000 in 9 months to €798,000 in 24 months.\n- **Partnerships**: Collaborations with ENI, Edison, and CVA for technology validation.\n\n### Technology\n- **Innovation**: The Shark4 probe is a highly innovative solution with modular design and precise measurement capabilities.\n- **Scalability**: The technology has been validated in real environments, showing potential for scalability across different sectors.\n- **Disruption Potential**: The shift from preventive to predictive maintenance represents a significant disruption in pipeline maintenance operations.\n\n### Timing\n- **Market Trends**: Increasing focus on green energy transition and digital transformation aligns well with PipeIn's solution.\n- **Consumer Readiness**: The market is ready for innovative solutions that reduce waste and prevent environmental disasters.\n- **Competitive Landscape**: While there are competitors, PipeIn's unique technology and patent protection provide a competitive edge.\n\n### Terms\n- **Investment Need**: €650K to sustain the business for the next 18 months.\n- **Use of Funds**: Primarily for R&D (61.8%), followed by G&A (31.1%), COGS (6.1%), and M&S (1%).\n- **Valuation and Equity**: Not explicitly mentioned, but the cap table shows significant ownership by the founders.\n\n### Summary of Pros and Cons\n- **Pros**:\n  \n- Strong market opportunity with a TAM of €40B.\n  \n- Innovative and patented technology with high barriers to entry.\n  \n- Experienced and well-rounded team.\n  \n- Significant traction with major industry players.\n- **Cons**:\n  \n- High burn rate and negative EBITDA projections.\n  \n- Execution risk in scaling the technology and achieving market penetration.\n  \n- Financial projections show significant cash outflows.\n\n### Opinionated Suggestion for Next Steps\n- **Recommendation**: Proceed with further due diligence.\n- **Rationale**: The startup shows strong potential with its innovative technology, experienced team, and significant market opportunity. However, further investigation into their financial projections, detailed market analysis, and validation of their technology's scalability is necessary before making an investment decision."
+  },
+  "news_data": [
+    {
+      "headline": "Polar Signals | Sifted: AI-Powered Company Profiles & Insights",
+      "url": "https://sifted.eu/company/Polar%20Signals",
+      "snippet": "-. Founded in. -. Similarity score. 93. Pipein logo. Pipein. Infrastructure optimization for efficient maintenance. HQ. Italy. Founded in. 2021.",
+      "image_url": null,
+      "source": "sifted.eu",
+      "id": 19033
+    }
+  ],
+  "investment_data": [
+    {
+      "raised_date": "2023-04-18T00:00:00",
+      "raised_amount_usd": 795687,
+      "investment_stage": "seed",
+      "post_money_valuation_usd": null,
+      "id": 2950,
+      "investors": [
+        {
+          "name": "CDP Venture Capital",
+          "website_url": "cdpventurecapital.it",
+          "linkedin_url": "https://www.linkedin.com/company/cdp-venture-capital-sgr/",
+          "is_lead": null,
+          "id": 5911
+        },
+        {
+          "name": "Pariter Partners",
+          "website_url": "pariterpartners.com",
+          "linkedin_url": "https://www.linkedin.com/company/pariter-partners/about/",
+          "is_lead": null,
+          "id": 5912
+        },
+        {
+          "name": "LVenture Group",
+          "website_url": "lventuregroup.com",
+          "linkedin_url": "https://www.linkedin.com/company/lventure-group/mycompany/",
+          "is_lead": null,
+          "id": 5913
+        }
+      ]
+    },
+    {
+      "raised_date": "2021-11-05T00:00:00",
+      "raised_amount_usd": 75085,
+      "investment_stage": "convertible_note",
+      "post_money_valuation_usd": null,
+      "id": 2951,
+      "investors": [
+        {
+          "name": "Cassa Depositi e Prestiti",
+          "website_url": "cdp.it",
+          "linkedin_url": "https://www.linkedin.com/company/cassa-depositi-e-prestiti/",
+          "is_lead": null,
+          "id": 5914
+        },
+        {
+          "name": "LVenture Group",
+          "website_url": "lventuregroup.com",
+          "linkedin_url": "https://www.linkedin.com/company/lventure-group/mycompany/",
+          "is_lead": null,
+          "id": 5915
+        }
+      ]
+    },
+    {
+      "raised_date": "2021-01-01T00:00:00",
+      "raised_amount_usd": 36466,
+      "investment_stage": "grant",
+      "post_money_valuation_usd": null,
+      "id": 2952,
+      "investors": []
+    }
+  ],
+  "custom_data": []
+}

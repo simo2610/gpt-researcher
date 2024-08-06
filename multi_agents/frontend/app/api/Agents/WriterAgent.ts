@@ -41,7 +41,7 @@ export class WriterAgent {
         console.log('finalRunStatus in WriterAgent.ts:', finalRunStatus);
 
         if (finalRunStatus.status === "error") {
-          throw new Error(`Run failed with message: ${finalRunStatus.message}`);
+          throw new Error(`Run failed with message: `);
         } else if (finalRunStatus.status === "success") {
           console.log('Run completed successfully', finalRunStatus);
 

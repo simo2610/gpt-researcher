@@ -49,7 +49,7 @@ export class EditorAgent {
     const queries = researchState.sections;
     const title = researchState.title;
 
-    const tasks = queries.map(query => researchAgent.research(query, "research_report", title));
+    const tasks = queries.map((query:any) => researchAgent.research(query, "research_report", title));
     const results = await Promise.all(tasks);
 
     return { research_data: results };

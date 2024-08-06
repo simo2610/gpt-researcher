@@ -27,7 +27,7 @@ export class WriterAgent {
     const thread = await this.client.threads.create();
     const messages = [{ role: "human", content: JSON.stringify(prompt) }];
 
-    const run = this.client.runs.create(thread["thread_id"], agent["assistant_id"], { input: { messages } });
+    const run = await this.client.runs.create(thread["thread_id"], agent["assistant_id"], { input: { messages } });
 
     // Poll the run until it completes
     setInterval(async () => {

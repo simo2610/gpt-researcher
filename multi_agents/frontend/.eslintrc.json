@@ -3,6 +3,18 @@
     "rules": {
       "no-undef": "off",
       "no-unused-vars": "off",
-      "no-extra-semi": "off"
-    }
+      "no-extra-semi": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "off"
+    },
+    "overrides": [
+      {
+        "files": ["**/*.ts", "**/*.tsx"],
+        "rules": {
+          "@typescript-eslint/no-explicit-any": "off",
+          "@typescript-eslint/explicit-module-boundary-types": "off"
+        }
+      }
+    ]
+  
 }

@@ -30,42 +30,31 @@ export class WriterAgent {
     const run = await this.client.runs.create(thread["thread_id"], agent["assistant_id"], { input: { messages } });
 
     // Poll the run until it completes
-    setInterval(async () => {
-      try {
-        // Supponendo che `thread["thread_id"]` e `run["run_id"]` siano valori validi e definiti
-        const threadId = thread["thread_id"];
-        const runId = run["run_id"];
+    setInterval(async ()=>{
+      let finalRunStatus = await this.client.runs.get(thread["thread_id"], run["run_id"]).then((res:any)=>res);
+      console.log('finalRunStatus in WriterAgent.ts:', finalRunStatus)
+      if (finalRunStatus.status === "error") {
+        throw new Error(`Run failed with message:`);
+      } else if (finalRunStatus.status == "success") {
+        console.log('Run completed successfully', finalRunStatus);
+        
+        // Get the final results
+        const results = await this.client.runs.listEvents(thread["thread_id"], run["run_id"]);
 
-        // Risolvi la promessa e ottieni l'oggetto `Run`
-        let finalRunStatus = await this.client.runs.get(threadId, runId);
-        console.log('finalRunStatus in WriterAgent.ts:', finalRunStatus);
+        // The results are sorted by time, so the most recent (final) step is the 0 index
+        const finalResult = results[0];
+        const finalMessages = (finalResult.data as Record<string, any>)["output"]["messages"];
+        const finalMessageContent = finalMessages[finalMessages.length - 1].content;
 
-        if (finalRunStatus.status === "error") {
-          throw new Error(`Run failed with message: `);
-        } else if (finalRunStatus.status === "success") {
-          console.log('Run completed successfully', finalRunStatus);
-
-          // Ottieni i risultati finali
-          const results = await this.client.runs.listEvents(threadId, runId);
-
-          // I risultati sono ordinati per tempo, quindi il passaggio più recente è l'indice 0
-          const finalResult = results[0];
-          const finalMessages = (finalResult.data as Record<string, any>)["output"]["messages"];
-          const finalMessageContent = finalMessages[finalMessages.length - 1].content;
-
-          // Assicurati che la risposta sia una stringa JSON valida
-          if (typeof finalMessageContent === 'string') {
-            return JSON.parse(finalMessageContent);
-          } else {
-            console.error("Response is not a valid JSON string:", finalMessageContent);
-            throw new Error("Invalid JSON response");
-          }
+        // Ensure the response is a valid JSON string
+        if (typeof finalMessageContent === 'string') {
+          return JSON.parse(finalMessageContent);
+        } else {
+          console.error("Response is not a valid JSON string:", finalMessageContent);
+          throw new Error("Invalid JSON response");
         }
-      } catch (error) {
-        console.error("Error in WriterAgent.ts:", error);
       }
-    }, 5000); // Polling every 5 seconds
-
+    }, 5000); // Polling every second
 
   }
 }

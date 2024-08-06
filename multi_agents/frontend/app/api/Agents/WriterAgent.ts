@@ -31,7 +31,7 @@ export class WriterAgent {
 
     // Poll the run until it completes
     setInterval(async ()=>{
-      let finalRunStatus = await this.client.runs.get(thread["thread_id"], run["run_id"]).then(res=>res);
+      let finalRunStatus = await this.client.runs.get(thread["thread_id"], run["run_id"]).then((res:any)=>res);
       console.log('finalRunStatus in WriterAgent.ts:', finalRunStatus)
       if (finalRunStatus.status === "failed") {
         throw new Error(`Run failed with message: ${finalRunStatus.message}`);

@@ -40,7 +40,7 @@ export class WriterAgent {
         let finalRunStatus = await this.client.runs.get(threadId, runId);
         console.log('finalRunStatus in WriterAgent.ts:', finalRunStatus);
 
-        if (finalRunStatus.status === "failed") {
+        if (finalRunStatus.status === "error") {
           throw new Error(`Run failed with message: ${finalRunStatus.message}`);
         } else if (finalRunStatus.status === "success") {
           console.log('Run completed successfully', finalRunStatus);

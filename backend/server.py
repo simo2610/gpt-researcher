@@ -109,6 +109,13 @@ async def websocket_endpoint(websocket: WebSocket):
                             },
                         }
                     )
+                elif data.startswith("human_feedback"):
+                    # Handle human feedback
+                    feedback_data = json.loads(data[14:])  # Remove "human_feedback" prefix
+                    # Process the feedback data as needed
+                    # You might want to send this feedback to the appropriate agent or update the research state
+                    print(f"Received human feedback: {feedback_data}")
+                    # You can add logic here to forward the feedback to the appropriate agent or update the research state
                 else:
                     print("Error: not enough parameters provided.")
     except WebSocketDisconnect:
@@ -147,7 +154,8 @@ async def get_config(
         "SEARX_URL": searx_url if searx_url else os.getenv("SEARX_URL", ""),
         "LANGCHAIN_TRACING_V2": os.getenv("LANGCHAIN_TRACING_V2", "true"),
         "DOC_PATH": os.getenv("DOC_PATH", ""),
-        "RETRIEVER": os.getenv("RETRIEVER", "")
+        "RETRIEVER": os.getenv("RETRIEVER", ""),
+        "EMBEDDING_MODEL": os.getenv("OPENAI_EMBEDDING_MODEL", "")
     }
     return config
 

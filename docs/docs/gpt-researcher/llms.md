@@ -1,7 +1,7 @@
 # Configure LLM
 As described in the [introduction](/docs/gpt-researcher/config), the default LLM is OpenAI due to its superior performance and speed. 
 With that said, GPT Researcher supports various open/closed source LLMs, and you can easily switch between them by adding the `LLM_PROVIDER` env variable and corresponding configuration params.
-Current supported LLMs are `openai`, `google` (gemini), `azureopenai`, `ollama`, `anthropic`, `mistral`, `huggingface` and `groq`.
+Current supported LLMs are `openai`, `google` (gemini), `azure_openai`, `ollama`, `anthropic`, `mistral`, `huggingface` and `groq`.
 
 Using any model will require at least updating the `LLM_PROVIDER` param and passing the LLM provider API Key. You might also need to update the `SMART_LLM_MODEL` and `FAST_LLM_MODEL` env vars.
 To learn more about support customization options see [here](/gpt-researcher/config).
@@ -46,9 +46,18 @@ OPENAI_EMBEDDING_MODEL="custom_model"
 
 ### Azure OpenAI
 
+See also the documentation in the Langchain [Azure OpenAI](https://api.python.langchain.com/en/latest/chat_models/langchain_openai.chat_models.azure.AzureChatOpenAI.html) page.
+
+On Azure OpenAI you will need to create deployments for each model you want to use. Please also specify the model names/deployment names in your `.env` file:
+
 ```bash
-EMBEDDING_PROVIDER="azureopenai"
+EMBEDDING_PROVIDER="azure_openai"
 AZURE_OPENAI_API_KEY="Your key"
+AZURE_OPENAI_ENDPOINT="https://<your-endpoint>.openai.azure.com/"
+OPENAI_API_VERSION="2024-05-01-preview"
+FAST_LLM_MODEL="gpt-4o-mini"
+DEFAULT_LLM_MODEL="gpt-4o-mini"
+SMART_LLM_MODEL="gpt-4o"
 ```
 
 

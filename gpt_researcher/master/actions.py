@@ -1,11 +1,10 @@
 import asyncio
 import json
 import re
+from typing import Dict, List
 
 import json_repair
 import markdown
-
-from typing import List, Dict
 
 from gpt_researcher.master.prompts import *
 from gpt_researcher.scraper.scraper import Scraper
@@ -79,6 +78,38 @@ def get_retriever(retriever):
     return retriever
 
 
+def get_retrievers(headers, cfg):
+    """
+    Determine which retriever(s) to use based on headers, config, or default.
+
+    Args:
+        headers (dict): The headers dictionary
+        cfg (Config): The configuration object
+
+    Returns:
+        list: A list of retriever classes to be used for searching.
+    """
+    # Check headers first for multiple retrievers
+    if headers.get("retrievers"):
+        retrievers = headers.get("retrievers").split(",")
+    # If not found, check headers for a single retriever
+    elif headers.get("retriever"):
+        retrievers = [headers.get("retriever")]
+    # If not in headers, check config for multiple retrievers
+    elif cfg.retrievers:
+        retrievers = cfg.retrievers
+    # If not found, check config for a single retriever
+    elif cfg.retriever:
+        retrievers = [cfg.retriever]
+    # If still not set, use default retriever
+    else:
+        retrievers = [get_default_retriever().__name__]
+
+    # Convert retriever names to actual retriever classes
+    # Use get_default_retriever() as a fallback for any invalid retriever names
+    return [get_retriever(r) or get_default_retriever() for r in retrievers]
+
+
 def get_default_retriever(retriever):
     from gpt_researcher.retrievers import TavilySearch
 
@@ -115,7 +146,6 @@ async def choose_agent(
             llm_provider=cfg.llm_provider,
             llm_kwargs=cfg.llm_kwargs,
             cost_callback=cost_callback,
-            openai_api_key=headers.get("openai_api_key"),
         )
 
         agent_dict = json.loads(response)
@@ -163,7 +193,6 @@ async def get_sub_queries(
     parent_query: str,
     report_type: str,
     cost_callback: callable = None,
-    openai_api_key=None,
 ):
     """
     Gets the sub queries
@@ -198,7 +227,6 @@ async def get_sub_queries(
         llm_provider=cfg.llm_provider,
         llm_kwargs=cfg.llm_kwargs,
         cost_callback=cost_callback,
-        openai_api_key=openai_api_key,
     )
 
     sub_queries = json_repair.loads(response)
@@ -395,35 +423,9 @@ async def generate_report(
     report = ""
 
     if report_type == "subtopic_report":
-        content = f"{generate_prompt(query, existing_headers, relevant_written_contents, main_topic, context, report_format=cfg.report_format, total_words=cfg.total_words)}"
-        if tone:
-            content += f", tone={tone}"
-        summary = await create_chat_completion(
-            model=cfg.fast_llm_model,
-            messages=[
-                {"role": "system", "content": agent_role_prompt},
-                {"role": "user", "content": content},
-            ],
-            temperature=0,
-            llm_provider=cfg.llm_provider,
-            llm_kwargs=cfg.llm_kwargs,
-            cost_callback=cost_callback,
-        )
+        content = f"{generate_prompt(query, existing_headers, relevant_written_contents, main_topic, context, report_format=cfg.report_format, tone=tone, total_words=cfg.total_words)}"
     else:
-        content = f"{generate_prompt(query, context, report_source, report_format=cfg.report_format, total_words=cfg.total_words)}"
-        if tone:
-            content += f", tone={tone}"
-        summary = await create_chat_completion(
-            model=cfg.fast_llm_model,
-            messages=[
-                {"role": "system", "content": agent_role_prompt},
-                {"role": "user", "content": content},
-            ],
-            temperature=0,
-            llm_provider=cfg.llm_provider,
-            llm_kwargs=cfg.llm_kwargs,
-            cost_callback=cost_callback,
-        )
+        content = f"{generate_prompt(query, context, report_source, report_format=cfg.report_format, tone=tone, total_words=cfg.total_words)}"
     try:
         report = await create_chat_completion(
             model=cfg.smart_llm_model,
@@ -438,7 +440,6 @@ async def generate_report(
             max_tokens=cfg.smart_token_limit,
             llm_kwargs=cfg.llm_kwargs,
             cost_callback=cost_callback,
-            openai_api_key=headers.get("openai_api_key"),
         )
     except Exception as e:
         print(f"{Fore.RED}Error in generate_report: {e}{Style.RESET_ALL}")
@@ -460,7 +461,11 @@ async def stream_output(
         None
     """
     if not websocket or logging:
-        print(output)
+        try:
+            print(output)
+        except UnicodeEncodeError:
+            # Option 1: Replace problematic characters with a placeholder
+            print(output.encode('cp1252', errors='replace').decode('cp1252'))
 
     if websocket:
         await websocket.send_json(

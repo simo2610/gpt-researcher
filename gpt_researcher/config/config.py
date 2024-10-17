@@ -1,13 +1,15 @@
 import json
 import os
-from typing import Dict, Any, List
-from gpt_researcher.config.configurations.default_config import DEFAULT_CONFIG
+import warnings
+from typing import Dict, Any, List, Union, Type, get_origin, get_args
+from .variables.default import DEFAULT_CONFIG
+from .variables.base import BaseConfig
 
 
 class Config:
     """Config class for GPT Researcher."""
 
-    CONFIG_DIR = os.path.join(os.path.dirname(__file__), "configurations")
+    CONFIG_DIR = os.path.join(os.path.dirname(__file__), "variables")
 
     def __init__(self, config_name: str = "default"):
         """Initialize the config class."""
@@ -20,7 +22,10 @@ class Config:
 
         # Set attributes based on the loaded config
         for key, value in config_to_use.items():
-            setattr(self, key.lower(), os.getenv(key, value))
+            env_value = os.getenv(key)
+            if env_value is not None:
+                value = self.convert_env_value(key, env_value, BaseConfig.__annotations__[key])
+            setattr(self, key.lower(), value)
 
         self.valid_retrievers = config_to_use['VALID_RETRIEVERS']
         try:
@@ -28,6 +33,33 @@ class Config:
         except ValueError as e:
             print(f"Warning: {str(e)}. Using default retrievers.")
             self.retrievers = list(self.valid_retrievers.values())
+
+        _deprecation_warning = (
+            "LLM_PROVIDER, FAST_LLM_MODEL and SMART_LLM_MODEL are deprecated and "
+            "will be removed soon. Use FAST_LLM and SMART_LLM instead."
+        )
+        try:
+            if self.llm_provider is not None:
+                warnings.warn(_deprecation_warning, DeprecationWarning, stacklevel=2)
+        except AttributeError:
+            self.llm_provider = None
+        try:
+            if self.fast_llm_model is not None:
+                warnings.warn(_deprecation_warning, DeprecationWarning, stacklevel=2)
+        except AttributeError:
+            self.fast_llm_model = None
+        try:
+            if self.smart_llm_model is not None:
+                warnings.warn(_deprecation_warning, DeprecationWarning, stacklevel=2)
+        except AttributeError:
+            self.smart_llm_model = None
+
+        _fast_llm_provider, _fast_llm_model = self.parse_llm(self.fast_llm)
+        _smart_llm_provider, _smart_llm_model = self.parse_llm(self.smart_llm)
+        self.fast_llm_provider = self.llm_provider or _fast_llm_provider
+        self.fast_llm_model = self.fast_llm_model or _fast_llm_model
+        self.smart_llm_provider = self.llm_provider or _smart_llm_provider
+        self.smart_llm_model = self.smart_llm_model or _smart_llm_model
 
         self.doc_path = config_to_use['DOC_PATH']
 
@@ -84,6 +116,19 @@ class Config:
             )
         return retrievers
 
+    @staticmethod
+    def parse_llm(llm_str: str | None) -> tuple[str | None, str | None]:
+        """Parse llm string into (llm_provider, llm_model)."""
+        if llm_str is None:
+            return None, None
+        try:
+            return llm_str.split(":", 1)
+        except ValueError:
+            raise ValueError(
+                "Set SMART_LLM or FAST_LLM = '<llm_provider>:<llm_model_name>' "
+                "Eg 'openai:gpt-4o-mini'"
+            )
+
     def validate_doc_path(self):
         """Ensure that the folder exists at the doc path"""
         os.makedirs(self.doc_path, exist_ok=True)
@@ -96,3 +141,35 @@ class Config:
             config = json.load(f)
         for key, value in config.items():
             setattr(self, key.lower(), value)
+
+    @staticmethod
+    def convert_env_value(key: str, env_value: str, type_hint: Type) -> Any:
+        """Convert environment variable to the appropriate type based on the type hint."""
+        origin = get_origin(type_hint)
+        args = get_args(type_hint)
+
+        if origin is Union:
+            # Handle Union types (e.g., Union[str, None])
+            for arg in args:
+                if arg is type(None):
+                    if env_value.lower() in ('none', 'null', ''):
+                        return None
+                else:
+                    try:
+                        return Config.convert_env_value(key, env_value, arg)
+                    except ValueError:
+                        continue
+            raise ValueError(f"Cannot convert {env_value} to any of {args}")
+
+        if type_hint is bool:
+            return env_value.lower() in ('true', '1', 'yes', 'on')
+        elif type_hint is int:
+            return int(env_value)
+        elif type_hint is float:
+            return float(env_value)
+        elif type_hint in (str, Any):
+            return env_value
+        elif origin is list or origin is List:
+            return json.loads(env_value)
+        else:
+            raise ValueError(f"Unsupported type {type_hint} for key {key}")

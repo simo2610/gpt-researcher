@@ -12,6 +12,7 @@ from .skills.researcher import ResearchConductor
 from .skills.writer import ReportGenerator
 from .skills.context_manager import ContextManager
 from .skills.browser import BrowserManager
+from .skills.curator import SourceCurator
 
 from .actions import (
     add_references,
@@ -32,6 +33,7 @@ class GPTResearcher:
         report_source: str = ReportSource.Web.value,
         tone: Tone = Tone.Objective,
         source_urls=None,
+        complement_source_urls=False,
         documents=None,
         vector_store=None,
         vector_store_filter=None,
@@ -57,6 +59,7 @@ class GPTResearcher:
         self.max_subtopics = max_subtopics
         self.tone = tone if isinstance(tone, Tone) else Tone.Objective
         self.source_urls = source_urls
+        self.complement_source_urls: bool = complement_source_urls
         self.research_sources = []  # The list of scraped sources including title, content and images
         self.research_images = []  # The list of selected research images
         self.documents = documents
@@ -82,6 +85,7 @@ class GPTResearcher:
         self.report_generator: ReportGenerator = ReportGenerator(self)
         self.context_manager: ContextManager = ContextManager(self)
         self.scraper_manager: BrowserManager = BrowserManager(self)
+        self.source_curator: SourceCurator = SourceCurator(self)
 
     async def conduct_research(self):
         if not (self.agent and self.role):

@@ -1,14 +1,19 @@
 from concurrent.futures.thread import ThreadPoolExecutor
 from functools import partial
+from colorama import Fore, init
 
 import requests
+import subprocess
+import sys
+import importlib
 
-from gpt_researcher.scraper import (
+from . import (
     ArxivScraper,
     BeautifulSoupScraper,
-    NewspaperScraper,
     PyMuPDFScraper,
     WebBaseLoaderScraper,
+    BrowserScraper,
+    TavilyExtract
 )
 
 
@@ -27,32 +32,58 @@ class Scraper:
         self.session = requests.Session()
         self.session.headers.update({"User-Agent": user_agent})
         self.scraper = scraper
+        if self.scraper == "tavily_extract":
+            self._check_pkg(self.scraper)
 
     def run(self):
         """
         Extracts the content from the links
         """
-        partial_extract = partial(self.extract_data_from_link, session=self.session)
+        partial_extract = partial(self.extract_data_from_url, session=self.session)
         with ThreadPoolExecutor(max_workers=20) as executor:
             contents = executor.map(partial_extract, self.urls)
         res = [content for content in contents if content["raw_content"] is not None]
         return res
 
-    def extract_data_from_link(self, link, session):
+    def _check_pkg(self, scrapper_name : str) -> None:
+        """
+        Checks and ensures required Python packages are available for scrapers that need
+        dependencies beyond requirements.txt. When adding a new scraper to the repo, update `pkg_map`
+        with its required information and call check_pkg() during initialization.
+        """
+        pkg_map = {
+            "tavily_extract": {"package_installation_name": "tavily-python",
+                               "import_name": "tavily"},
+        }
+        pkg = pkg_map[scrapper_name]
+        if not importlib.util.find_spec(pkg["import_name"]):
+            pkg_inst_name = pkg["package_installation_name"]
+            init(autoreset=True)
+            print(Fore.YELLOW + f"{pkg_inst_name} not found. Attempting to install...")
+            try:
+                subprocess.check_call([sys.executable, "-m", "pip", "install", pkg_inst_name])
+                print(Fore.GREEN + f"{pkg_inst_name} installed successfully.")
+            except subprocess.CalledProcessError:
+                raise ImportError(
+                    Fore.RED + f"Unable to install {pkg_inst_name}. Please install manually with "
+                               f"`pip install -U {pkg_inst_name}`"
+                )
+
+    def extract_data_from_url(self, link, session):
         """
         Extracts the data from the link
         """
-        content = ""
         try:
             Scraper = self.get_scraper(link)
             scraper = Scraper(link, session)
-            content = scraper.scrape()
+            content, image_urls, title = scraper.scrape()
 
             if len(content) < 100:
-                return {"url": link, "raw_content": None}
-            return {"url": link, "raw_content": content}
+                return {"url": link, "raw_content": None, "image_urls": [], "title": ""}
+            
+            return {"url": link, "raw_content": content, "image_urls": image_urls, "title": title}
         except Exception as e:
-            return {"url": link, "raw_content": None}
+            return {"url": link, "raw_content": None, "image_urls": [], "title": ""}
 
     def get_scraper(self, link):
         """
@@ -74,9 +105,10 @@ class Scraper:
         SCRAPER_CLASSES = {
             "pdf": PyMuPDFScraper,
             "arxiv": ArxivScraper,
-            "newspaper": NewspaperScraper,
             "bs": BeautifulSoupScraper,
             "web_base_loader": WebBaseLoaderScraper,
+            "browser": BrowserScraper,
+            "tavily_extract": TavilyExtract
         }
 
         scraper_key = None

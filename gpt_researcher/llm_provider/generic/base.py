@@ -1,7 +1,27 @@
 import importlib
 from typing import Any
+from colorama import Fore, Style, init
+import os
 
-from colorama import Fore, Style
+_SUPPORTED_PROVIDERS = {
+    "openai",
+    "anthropic",
+    "azure_openai",
+    "cohere",
+    "google_vertexai",
+    "google_genai",
+    "fireworks",
+    "ollama",
+    "together",
+    "mistralai",
+    "huggingface",
+    "groq",
+    "bedrock",
+    "dashscope",
+    "xai",
+    "deepseek",
+    "litellm",
+}
 
 
 class GenericLLMProvider:
@@ -24,6 +44,10 @@ class GenericLLMProvider:
         elif provider == "azure_openai":
             _check_pkg("langchain_openai")
             from langchain_openai import AzureChatOpenAI
+
+            if "model" in kwargs:
+                model_name = kwargs.get("model", None)
+                kwargs = {"azure_deployment": model_name, **kwargs}
 
             llm = AzureChatOpenAI(**kwargs)
         elif provider == "cohere":
@@ -48,9 +72,9 @@ class GenericLLMProvider:
             llm = ChatFireworks(**kwargs)
         elif provider == "ollama":
             _check_pkg("langchain_community")
-            from langchain_community.chat_models import ChatOllama
-
-            llm = ChatOllama(**kwargs)
+            from langchain_ollama import ChatOllama
+            
+            llm = ChatOllama(base_url=os.environ["OLLAMA_BASE_URL"], **kwargs)
         elif provider == "together":
             _check_pkg("langchain_together")
             from langchain_together import ChatTogether
@@ -80,13 +104,35 @@ class GenericLLMProvider:
 
             if "model" in kwargs or "model_name" in kwargs:
                 model_id = kwargs.pop("model", None) or kwargs.pop("model_name", None)
-                kwargs = {"model_id": model_id, **kwargs}
+                kwargs = {"model_id": model_id, "model_kwargs": kwargs}
             llm = ChatBedrock(**kwargs)
+        elif provider == "dashscope":
+            _check_pkg("langchain_dashscope")
+            from langchain_dashscope import ChatDashScope
+
+            llm = ChatDashScope(**kwargs)
+        elif provider == "xai":
+            _check_pkg("langchain_xai")
+            from langchain_xai import ChatXAI
+
+            llm = ChatXAI(**kwargs)
+        elif provider == "deepseek":
+            _check_pkg("langchain_openai")
+            from langchain_openai import ChatOpenAI
+
+            llm = ChatOpenAI(openai_api_base='https://api.deepseek.com',
+                     openai_api_key=os.environ["DEEPSEEK_API_KEY"],
+                     **kwargs
+                )
+        elif provider == "litellm":
+            _check_pkg("langchain_community")
+            from langchain_community.chat_models.litellm import ChatLiteLLM
+
+            llm = ChatLiteLLM(**kwargs)
         else:
             supported = ", ".join(_SUPPORTED_PROVIDERS)
             raise ValueError(
-                f"Unsupported {provider=}.\n\nSupported model providers are: "
-                f"{supported}"
+                f"Unsupported {provider}.\n\nSupported model providers are: {supported}"
             )
         return cls(llm)
 
@@ -112,36 +158,28 @@ class GenericLLMProvider:
                 response += content
                 paragraph += content
                 if "\n" in paragraph:
-                    if websocket is not None:
-                        await websocket.send_json({"type": "report", "output": paragraph})
-                    else:
-                        print(f"{Fore.GREEN}{paragraph}{Style.RESET_ALL}")
+                    await self._send_output(paragraph, websocket)
                     paragraph = ""
+
+        if paragraph:
+            await self._send_output(paragraph, websocket)
 
         return response
 
+    async def _send_output(self, content, websocket=None):
+        if websocket is not None:
+            await websocket.send_json({"type": "report", "output": content})
+        else:
+            print(f"{Fore.GREEN}{content}{Style.RESET_ALL}")
 
-
-_SUPPORTED_PROVIDERS = {
-    "openai",
-    "anthropic",
-    "azure_openai",
-    "cohere",
-    "google_vertexai",
-    "google_genai",
-    "fireworks",
-    "ollama",
-    "together",
-    "mistralai",
-    "huggingface",
-    "groq",
-    "bedrock",
-}
 
 def _check_pkg(pkg: str) -> None:
     if not importlib.util.find_spec(pkg):
         pkg_kebab = pkg.replace("_", "-")
+        # Import colorama and initialize it
+        init(autoreset=True)
+        # Use Fore.RED to color the error message
         raise ImportError(
-            f"Unable to import {pkg_kebab}. Please install with "
+            Fore.RED + f"Unable to import {pkg_kebab}. Please install with "
             f"`pip install -U {pkg_kebab}`"
         )

@@ -33,14 +33,13 @@
       collapsed: true,
       items: [
         'gpt-researcher/gptr/pip-package',
+        'gpt-researcher/gptr/npm-package',
         'gpt-researcher/gptr/example',
         'gpt-researcher/gptr/config',
         'gpt-researcher/gptr/scraping',
-        'gpt-researcher/gptr/handling-logs-as-they-stream',
         'gpt-researcher/gptr/querying-the-backend',
         'gpt-researcher/gptr/automated-tests',
-        'gpt-researcher/gptr/troubleshooting',
-        'gpt-researcher/gptr/logs'
+        'gpt-researcher/gptr/troubleshooting'
       ],
     },
     {
@@ -53,7 +52,7 @@
         'gpt-researcher/frontend/nextjs-frontend',
         'gpt-researcher/frontend/vanilla-js-frontend',
         'gpt-researcher/frontend/discord-bot',
-        'gpt-researcher/frontend/debugging-websockets'
+        'gpt-researcher/frontend/visualizing-websockets'
       ],
     },
     {
@@ -71,13 +70,26 @@
     },
     {
       type: 'category',
+      label: 'Handling Logs',
+      collapsible: true,
+      collapsed: true,
+      items: [
+        'gpt-researcher/handling-logs/all-about-logs',
+        'gpt-researcher/handling-logs/simple-logs-example',
+        'gpt-researcher/handling-logs/langsmith-logs'
+        ]
+    },
+    {
+      type: 'category',
       label: 'LLM Providers',
       collapsible: true,
       collapsed: true,
       items: [
         'gpt-researcher/llms/llms',
-        'gpt-researcher/llms/running-with-ollama',
-        'gpt-researcher/llms/testing-your-llm'
+        'gpt-researcher/llms/supported-llms',
+        'gpt-researcher/llms/testing-your-llm',
+        'gpt-researcher/llms/running-with-azure',
+        'gpt-researcher/llms/running-with-ollama'
       ]
     },
     {

@@ -7,7 +7,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-async def get_search_results(query: str, retriever: Any) -> List[Dict[str, Any]]:
+async def get_search_results(query: str, retriever: Any, query_domains: List[str] = None) -> List[Dict[str, Any]]:
     """
     Get web search results for a given query.
     
@@ -18,7 +18,7 @@ async def get_search_results(query: str, retriever: Any) -> List[Dict[str, Any]]
     Returns:
         A list of search results
     """
-    search_retriever = retriever(query)
+    search_retriever = retriever(query, query_domains=query_domains)
     return search_retriever.search()
 
 async def generate_sub_queries(
@@ -48,7 +48,7 @@ async def generate_sub_queries(
         query,
         parent_query,
         report_type,
-        max_iterations=cfg.max_iterations or 1,
+        max_iterations=cfg.max_iterations or 3,
         context=context
     )
 
@@ -60,6 +60,7 @@ async def generate_sub_queries(
             llm_provider=cfg.strategic_llm_provider,
             max_tokens=None,
             llm_kwargs=cfg.llm_kwargs,
+            reasoning_effort="high",
             cost_callback=cost_callback,
         )
     except Exception as e:

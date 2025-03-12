@@ -3,17 +3,7 @@ import FileUpload from "../Settings/FileUpload";
 import ToneSelector from "../Settings/ToneSelector";
 import { useAnalytics } from "../../hooks/useAnalytics";
 import { CloseIcon } from '@chakra-ui/icons';
-
-interface ChatBoxSettings {
-  report_type: string;
-  report_source: string;
-  tone: string;
-  domains: Domain[];
-}
-
-interface Domain {
-  value: string;
-}
+import { ChatBoxSettings, Domain } from '@/types/data';
 
 interface ResearchFormProps {
   chatBoxSettings: ChatBoxSettings;
@@ -24,14 +14,12 @@ interface ResearchFormProps {
     reportSource: string,
     domains: Domain[]
   ) => void;
-  defaultReportType: string;
 }
 
 export default function ResearchForm({
   chatBoxSettings,
   setChatBoxSettings,
   onFormSubmit,
-  defaultReportType,
 }: ResearchFormProps) {
   const { trackResearchQuery } = useAnalytics();
   const [task, setTask] = useState("");
@@ -52,9 +40,9 @@ export default function ResearchForm({
     localStorage.setItem('domainFilters', JSON.stringify(domains));
     setChatBoxSettings(prev => ({
       ...prev,
-      domains: domains
+      domains: domains.map(domain => domain.value)
     }));
-  }, [domains]);
+  }, [domains, setChatBoxSettings]);
 
   const handleAddDomain = (e: React.FormEvent) => {
     e.preventDefault();
@@ -89,27 +77,17 @@ export default function ResearchForm({
     if (onFormSubmit) {
       const updatedSettings = {
         ...chatBoxSettings,
-        domains: domains // Make sure domains are included
+        domains: domains.map(domain => domain.value)
       };
       setChatBoxSettings(updatedSettings);
       onFormSubmit(task, report_type, report_source, domains);
     }
   };
 
-  useEffect(() => {
-    // Set default report type only if report_type is empty (initial mount)
-    if (!chatBoxSettings.report_type) {
-      setChatBoxSettings((prevSettings) => ({
-        ...prevSettings,
-        report_type: defaultReportType,
-      }));
-    }
-  }, [defaultReportType, setChatBoxSettings, chatBoxSettings.report_type]);
-
   return (
     <form
       method="POST"
-      className="report_settings mt-3"
+      className="report_settings_static mt-3"
       onSubmit={handleSubmit}
     >
       <div className="form-group">
@@ -120,13 +98,14 @@ export default function ResearchForm({
           name="report_type"
           value={report_type}
           onChange={onFormChange}
-          className="form-control"
+          className="form-control-static"
           required
         >
-          <option value="multi_agents">Multi Agents Report</option>
           <option value="research_report">
             Summary - Short and fast (~2 min)
           </option>
+          <option value="deep">Deep Research Report</option>
+          <option value="multi_agents">Multi Agents Report</option>
           <option value="detailed_report">
             Detailed - In depth and longer (~5 min)
           </option>
@@ -141,7 +120,7 @@ export default function ResearchForm({
           name="report_source"
           value={report_source}
           onChange={onFormChange}
-          className="form-control"
+          className="form-control-static"
           required
         >
           <option value="web">The Internet</option>
@@ -150,15 +129,27 @@ export default function ResearchForm({
         </select>
       </div>
 
+      
+
+      {report_source === "local" || report_source === "hybrid" ? (
+        <FileUpload />
+      ) : null}
+      
+      <ToneSelector tone={tone} onToneChange={onToneChange} />
+
+      {/** TODO: move the below to its own component */}
       {(chatBoxSettings.report_source === "web" || chatBoxSettings.report_source === "hybrid") && (
-        <div className="mt-4">
+        <div className="mt-4 domain_filters">
           <div className="flex gap-2 mb-4">
+          <label htmlFor="domain_filters" className="agent_question">
+          Filter by domain{" "}
+        </label>
             <input
               type="text"
               value={newDomain}
               onChange={(e) => setNewDomain(e.target.value)}
               placeholder="Filter by domain (e.g., techcrunch.com)"
-              className="flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="input-static"
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   e.preventDefault();
@@ -169,7 +160,7 @@ export default function ResearchForm({
             <button
               type="button"
               onClick={handleAddDomain}
-              className="inline-flex justify-center rounded-md border border-transparent bg-purple-600 px-4 py-2 text-sm font-medium text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="button-static"
             >
               Add Domain
             </button>
@@ -179,13 +170,13 @@ export default function ResearchForm({
             {domains.map((domain, index) => (
               <div
                 key={index}
-                className="inline-flex items-center rounded-full bg-purple-100 px-3 py-1 text-sm mb-3"
+                className="domain-tag-static"
               >
-                <span className="text-purple-700">{domain.value}</span>
+                <span className="domain-text-static">{domain.value}</span>
                 <button
                   type="button"
                   onClick={() => handleRemoveDomain(domain.value)}
-                  className="ml-2 text-purple-400 hover:text-purple-600"
+                  className="domain-button-static"
                 >
                   <CloseIcon className="h-4 w-4" />
                 </button>
@@ -194,12 +185,6 @@ export default function ResearchForm({
           </div>
         </div>
       )}
-
-      {report_source === "local" || report_source === "hybrid" ? (
-        <FileUpload />
-      ) : null}
-      
-      <ToneSelector tone={tone} onToneChange={onToneChange} />
     </form>
   );
 }

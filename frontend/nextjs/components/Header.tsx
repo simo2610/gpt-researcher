@@ -20,7 +20,7 @@ const Header = ({ loading, isStopped, showResult, onStop, onNewResearch }: Heade
           {/* Logo/Home link */}
           <a href="/">
             <Image
-              src="/img/logo-footer-scientifica.png"
+              src="/img/venture-capital_negative.png"
               alt="logo"
               width={60}
               height={60}

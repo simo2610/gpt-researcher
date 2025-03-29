@@ -24,7 +24,7 @@ const Header = ({ loading, isStopped, showResult, onStop, onNewResearch }: Heade
               alt="logo"
               width={100}
               height={60}
-              className="lg:h-16 lg:w-16"
+              className="lg:h-16 lg:w-72"
             />
           </a>
           

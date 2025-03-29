@@ -22,8 +22,6 @@ const Header = ({ loading, isStopped, showResult, onStop, onNewResearch }: Heade
             <Image
               src="/img/venture-capital_negative.png"
               alt="logo"
-              width={60}
-              height={60}
               className="lg:h-16 lg:w-16"
             />
           </a>

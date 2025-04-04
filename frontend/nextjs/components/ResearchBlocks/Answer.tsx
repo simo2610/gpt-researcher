@@ -1,11 +1,10 @@
 import Image from "next/image";
-import React from 'react';
 import { Toaster, toast } from "react-hot-toast";
 import { useEffect, useState } from 'react';
 import { remark } from 'remark';
 import html from 'remark-html';
 import { Compatible } from "vfile";
-import '../../styles/markdown.css';
+import '@/styles/markdown.css';
 
 export default function Answer({ answer }: { answer: string }) {
   async function markdownToHtml(markdown: Compatible | undefined) {
@@ -38,7 +37,7 @@ export default function Answer({ answer }: { answer: string }) {
                     });
                   }}
                 >
-                  <img
+                  <Image
                     src="/img/copy-white.svg"
                     alt="footer"
                     width={20}

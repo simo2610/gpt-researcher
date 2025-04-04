@@ -1,4 +1,3 @@
-import React from 'react';
 import Image from "next/image";
 
 interface HeaderProps {
@@ -20,7 +19,7 @@ const Header = ({ loading, isStopped, showResult, onStop, onNewResearch }: Heade
         <div className="flex flex-col items-center">
           {/* Logo/Home link */}
           <a href="/">
-            <img
+            <Image
               src="/img/venture-capital_negative.png"
               alt="logo"
               width={100}

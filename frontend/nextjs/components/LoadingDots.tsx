@@ -1,5 +1,3 @@
-import React from 'react';
-
 const LoadingDots = () => {
   return (
     <div className="flex justify-center py-4">

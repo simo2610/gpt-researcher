@@ -31,10 +31,10 @@ export default function ChatBox({ chatBoxSettings, setChatBoxSettings }: ChatBox
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      let fullHost = getHost()
-      const protocol = fullHost.includes('https') ? 'wss:' : 'ws:'
-      const cleanHost = fullHost.replace('http://', '').replace('https://', '')
-      const ws_uri = `${protocol}//${cleanHost}/ws`
+      const fullHost = getHost()
+      const host = fullHost.replace('http://', '').replace('https://', '')
+      
+      const ws_uri = `${fullHost.includes('https') ? 'wss:' : 'ws:'}//${host}/ws`;
       const newSocket = new WebSocket(ws_uri);
       setSocket(newSocket);
 

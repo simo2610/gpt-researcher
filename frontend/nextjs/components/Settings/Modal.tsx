@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './Settings.css';
+// import './Settings.css';
 import ChatBox from './ChatBox';
 import { ChatBoxSettings } from '@/types/data';
 import { createPortal } from 'react-dom';

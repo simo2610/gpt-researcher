@@ -114,6 +114,19 @@ EMBEDDING="ollama:nomic-embed-text"
 
 Add `langchain-ollama` to [requirements.txt](https://github.com/assafelovic/gpt-researcher/blob/master/requirements.txt) for Docker Support or `pip install` it
 
+### Granite with Ollama
+
+GPT Researcher has custom prompt formatting for the [Granite family of models](https://ollama.com/search?q=granite). To use
+the right formatting, you can set the following environment variables:
+
+```bash
+OLLAMA_BASE_URL=http://localhost:11434
+FAST_LLM="ollama:granite3.3:2b"
+SMART_LLM="ollama:granite3.3:8b"
+STRATEGIC_LLM="ollama:granite3.3:8b"
+PROMPT_FAMILY="granite"
+```
+
 ## Groq
 
 GroqCloud provides advanced AI hardware and software solutions designed to deliver amazingly fast AI inference performance.
@@ -202,7 +215,7 @@ FAST_LLM="huggingface:HuggingFaceH4/zephyr-7b-beta"
 SMART_LLM="huggingface:HuggingFaceH4/zephyr-7b-beta"
 STRATEGIC_LLM="huggingface:HuggingFaceH4/zephyr-7b-beta"
 
-EMBEDDING="sentence-transformers/all-MiniLM-L6-v2"
+EMBEDDING="huggingface:sentence-transformers/all-MiniLM-L6-v2"
 ```
 
 Add `langchain-huggingface` to [requirements.txt](https://github.com/assafelovic/gpt-researcher/blob/master/requirements.txt) for Docker Support or `pip install` it

@@ -73,6 +73,8 @@ class Config:
                     self.embedding_model = "text-embedding-3-large"
                 case "huggingface":
                     self.embedding_model = "sentence-transformers/all-MiniLM-L6-v2"
+                case "gigachat":
+                    self.embedding_model = "Embeddings"
                 case "google_genai":
                     self.embedding_model = "text-embedding-004"
                 case _:
@@ -222,6 +224,8 @@ class Config:
         elif type_hint in (str, Any):
             return env_value
         elif origin is list or origin is List:
+            return json.loads(env_value)
+        elif type_hint is dict:
             return json.loads(env_value)
         else:
             raise ValueError(f"Unsupported type {type_hint} for key {key}")

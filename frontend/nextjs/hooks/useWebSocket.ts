@@ -4,10 +4,10 @@ import { getHost } from '../helpers/getHost';
 
 export const useWebSocket = (
   setOrderedData: React.Dispatch<React.SetStateAction<Data[]>>,
-  setAnswer: React.Dispatch<React.SetStateAction<string>>, 
+  setAnswer: React.Dispatch<React.SetStateAction<string>>,
   setLoading: React.Dispatch<React.SetStateAction<boolean>>,
   setShowHumanFeedback: React.Dispatch<React.SetStateAction<boolean>>,
-  setQuestionForHuman: React.Dispatch<React.SetStateAction<boolean | true>>,
+  setQuestionForHuman: React.Dispatch<React.SetStateAction<boolean | true>>
 ) => {
   const [socket, setSocket] = useState<WebSocket | null>(null);
   const heartbeatInterval = useRef<number>();
@@ -26,7 +26,7 @@ export const useWebSocket = (
     if (heartbeatInterval.current) {
       clearInterval(heartbeatInterval.current);
     }
-    
+
     // Start new heartbeat
     heartbeatInterval.current = window.setInterval(() => {
       if (ws.readyState === WebSocket.OPEN) {
@@ -52,10 +52,10 @@ export const useWebSocket = (
         const domainFilters = JSON.parse(localStorage.getItem('domainFilters') || '[]');
         const domains = domainFilters ? domainFilters.map((domain: any) => domain.value) : [];
         const { report_type, report_source, tone } = chatBoxSettings;
-        let data = "start " + JSON.stringify({ 
+        let data = "start " + JSON.stringify({
           task: promptValue,
-          report_type, 
-          report_source, 
+          report_type,
+          report_source,
           tone,
           query_domains: domains
         });

@@ -9,7 +9,7 @@ export const useWebSocket = (
   setShowHumanFeedback: React.Dispatch<React.SetStateAction<boolean>>,
   setQuestionForHuman: React.Dispatch<React.SetStateAction<boolean | true>>
 ) => {
-  const [socket, setSocket] = useState<WebSocket | null>(null);
+  const [socketA, setSocket] = useState<WebSocket | null>(null);
   const heartbeatInterval = useRef<number>();
 
   // Cleanup function for heartbeat
@@ -39,7 +39,7 @@ export const useWebSocket = (
     const storedConfig = localStorage.getItem('apiVariables');
     const apiVariables = storedConfig ? JSON.parse(storedConfig) : {};
 
-    if (!socket && typeof window !== 'undefined') {
+    if (!socketA && typeof window !== 'undefined') {
       const fullHost = getHost();
       const host = fullHost.replace('http://', '').replace('https://', '');
       const ws_uri = `${fullHost.includes('https') ? 'wss:' : 'ws:'}//${host}/ws`;
@@ -102,7 +102,7 @@ export const useWebSocket = (
         }
       };
     }
-  }, [socket]); // Remove currentApiUrl from dependencies
+  }
 
-  return { socket, setSocket, initializeWebSocket };
+  return { socketA, setSocket, initializeWebSocket };
 };

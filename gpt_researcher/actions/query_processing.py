@@ -31,6 +31,7 @@ async def generate_sub_queries(
     cfg: Config,
     cost_callback: callable = None,
     prompt_family: type[PromptFamily] | PromptFamily = PromptFamily,
+    **kwargs
 ) -> List[str]:
     """
     Generate sub-queries using the specified LLM model.
@@ -60,12 +61,12 @@ async def generate_sub_queries(
         response = await create_chat_completion(
             model=cfg.strategic_llm_model,
             messages=[{"role": "user", "content": gen_queries_prompt}],
-            temperature=0.6,
             llm_provider=cfg.strategic_llm_provider,
             max_tokens=None,
             llm_kwargs=cfg.llm_kwargs,
-            reasoning_effort=ReasoningEfforts.High.value,
+            reasoning_effort=ReasoningEfforts.Medium.value,
             cost_callback=cost_callback,
+            **kwargs
         )
     except Exception as e:
         logger.warning(f"Error with strategic LLM: {e}. Retrying with max_tokens={cfg.strategic_token_limit}.")
@@ -74,11 +75,11 @@ async def generate_sub_queries(
             response = await create_chat_completion(
                 model=cfg.strategic_llm_model,
                 messages=[{"role": "user", "content": gen_queries_prompt}],
-                temperature=1,
-                llm_provider=cfg.strategic_llm_provider,
                 max_tokens=cfg.strategic_token_limit,
+                llm_provider=cfg.strategic_llm_provider,
                 llm_kwargs=cfg.llm_kwargs,
                 cost_callback=cost_callback,
+                **kwargs
             )
             logger.warning(f"Retrying with max_tokens={cfg.strategic_token_limit} successful.")
         except Exception as e:
@@ -92,6 +93,7 @@ async def generate_sub_queries(
                 llm_provider=cfg.smart_llm_provider,
                 llm_kwargs=cfg.llm_kwargs,
                 cost_callback=cost_callback,
+                **kwargs
             )
 
     return json_repair.loads(response)
@@ -104,6 +106,7 @@ async def plan_research_outline(
     parent_query: str,
     report_type: str,
     cost_callback: callable = None,
+    **kwargs
 ) -> List[str]:
     """
     Plan the research outline by generating sub-queries.
@@ -127,7 +130,8 @@ async def plan_research_outline(
         report_type,
         search_results,
         cfg,
-        cost_callback
+        cost_callback,
+        **kwargs
     )
 
     return sub_queries

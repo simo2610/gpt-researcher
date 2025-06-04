@@ -55,10 +55,13 @@ class GPTResearcher:
         max_subtopics: int = 5,
         log_handler=None,
         prompt_family: str | None = None,
+        **kwargs
     ):
+        self.kwargs = kwargs
         self.query = query
         self.report_type = report_type
         self.cfg = Config(config_path)
+        self.cfg.set_verbose(verbose)
         self.llm = GenericLLMProvider(self.cfg)
         self.report_source = report_source if report_source else getattr(self.cfg, 'report_source', None)
         self.report_format = report_format
@@ -141,6 +144,7 @@ class GPTResearcher:
                 cost_callback=self.add_costs,
                 headers=self.headers,
                 prompt_family=self.prompt_family,
+                **self.kwargs
             )
             await self._log_event("action", action="agent_selected", details={
                 "agent": self.agent,

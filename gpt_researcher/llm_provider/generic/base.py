@@ -29,7 +29,9 @@ _SUPPORTED_PROVIDERS = {
     "deepseek",
     "litellm",
     "gigachat",
-    "openrouter"
+    "openrouter",
+    "vllm_openai",
+    "aimlapi",
 }
 
 NO_SUPPORT_TEMPERATURE_MODELS = [
@@ -40,14 +42,20 @@ NO_SUPPORT_TEMPERATURE_MODELS = [
     "o1-2024-12-17",
     "o3-mini",
     "o3-mini-2025-01-31",
+    "o1-preview",
+    "o3",
+    "o3-2025-04-16",
     "o4-mini",
-    "o1-preview"
+    "o4-mini-2025-04-16",
 ]
 
 SUPPORT_REASONING_EFFORT_MODELS = [
     "o3-mini",
-    "o3-mini-2025-01-31"
-    "o4-mini"
+    "o3-mini-2025-01-31",
+    "o3",
+    "o3-2025-04-16",
+    "o4-mini",
+    "o4-mini-2025-04-16",
 ]
 
 class ReasoningEfforts(Enum):
@@ -76,12 +84,12 @@ class ChatLogger:
 
 class GenericLLMProvider:
 
-    def __init__(self, llm, chat_log: str | None = None):
+    def __init__(self, llm, chat_log: str | None = None,  verbose: bool = True):
         self.llm = llm
         self.chat_logger = ChatLogger(chat_log) if chat_log else None
-
+        self.verbose = verbose
     @classmethod
-    def from_provider(cls, provider: str, chat_log: str | None = None, **kwargs: Any):
+    def from_provider(cls, provider: str, chat_log: str | None = None, verbose: bool=True, **kwargs: Any):
         if provider == "openai":
             _check_pkg("langchain_openai")
             from langchain_openai import ChatOpenAI
@@ -205,36 +213,51 @@ class GenericLLMProvider:
                      rate_limiter=rate_limiter,
                      **kwargs
                 )
+        elif provider == "vllm_openai":
+            _check_pkg("langchain_openai")
+            from langchain_openai import ChatOpenAI
+            llm = ChatOpenAI(
+                openai_api_key=os.environ["VLLM_OPENAI_API_KEY"],
+                openai_api_base=os.environ["VLLM_OPENAI_API_BASE"],
+                **kwargs
+            )
+        elif provider == "aimlapi":
+            _check_pkg("langchain_openai")
+            from langchain_openai import ChatOpenAI
 
+            llm = ChatOpenAI(openai_api_base='https://api.aimlapi.com/v1',
+                             openai_api_key=os.environ["AIMLAPI_API_KEY"],
+                             **kwargs
+                             )
         else:
             supported = ", ".join(_SUPPORTED_PROVIDERS)
             raise ValueError(
                 f"Unsupported {provider}.\n\nSupported model providers are: {supported}"
             )
-        return cls(llm, chat_log)
+        return cls(llm, chat_log, verbose=verbose)
 
 
-    async def get_chat_response(self, messages, stream, websocket=None):
+    async def get_chat_response(self, messages, stream, websocket=None, **kwargs):
         if not stream:
             # Getting output from the model chain using ainvoke for asynchronous invoking
-            output = await self.llm.ainvoke(messages)
+            output = await self.llm.ainvoke(messages, **kwargs)
 
             res = output.content
 
         else:
-            res = await self.stream_response(messages, websocket)
+            res = await self.stream_response(messages, websocket, **kwargs)
 
         if self.chat_logger:
             await self.chat_logger.log_request(messages, res)
 
         return res
 
-    async def stream_response(self, messages, websocket=None):
+    async def stream_response(self, messages, websocket=None, **kwargs):
         paragraph = ""
         response = ""
 
         # Streaming the response using the chain astream method from langchain
-        async for chunk in self.llm.astream(messages):
+        async for chunk in self.llm.astream(messages, **kwargs):
             content = chunk.content
             if content is not None:
                 response += content
@@ -251,7 +274,7 @@ class GenericLLMProvider:
     async def _send_output(self, content, websocket=None):
         if websocket is not None:
             await websocket.send_json({"type": "report", "output": content})
-        else:
+        elif self.verbose:
             print(f"{Fore.GREEN}{content}{Style.RESET_ALL}")
 
 

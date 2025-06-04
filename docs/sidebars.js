@@ -118,6 +118,6 @@
     'roadmap',
     'faq',
   ],
-  // pydoc-markdown auto-generated markdowns from docstrings
-  referenceSideBar: [require("./docs/reference/sidebar.json")]
+  // Removing empty Reference category that was causing the build error
+  referenceSideBar: []
 };

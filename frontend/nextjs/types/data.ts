@@ -42,6 +42,15 @@ export interface ChatBoxSettings {
   tone: string;
   domains: string[];
   defaultReportType: string;
+  mcp_enabled: boolean;
+  mcp_configs: MCPConfig[];
+}
+
+export interface MCPConfig {
+  name: string;
+  command: string;
+  args: string[];
+  env: Record<string, string>;
 }
 
 export interface Domain {

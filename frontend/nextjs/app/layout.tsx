@@ -4,6 +4,7 @@ import PlausibleProvider from "next-plausible";
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { ResearchHistoryProvider } from "@/hooks/ResearchHistoryContext";
 import "./globals.css";
+import "../components/Settings/App.css";
 import Script from 'next/script';
 
 const inter = Lexend({ subsets: ["latin"] });

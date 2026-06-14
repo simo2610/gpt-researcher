@@ -130,7 +130,7 @@ const Modal: React.FC<ChatBoxProps> = ({ chatBoxSettings, setChatBoxSettings }) 
               </div>
               
               {/* Body with content */}
-              <div className="relative p-6 flex-auto bg-gray-900/95 modal-content">
+              <div className="settings relative p-6 flex-auto bg-gray-900/95 modal-content">
                 {false && (<div className="tabs mb-4">
                   <button onClick={() => setActiveTab('report_settings')} className={`tab-button ${activeTab === 'report_settings' ? 'active' : ''}`}>Report Settings</button>
                 </div>)}
